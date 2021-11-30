@@ -64,7 +64,7 @@
 
           emacs = (emacs.override { srcRepo = true; nativeComp = true; withXwidgets = true; }).overrideAttrs (
             o: rec {
-version = "29.0.50";
+              version = "29.0.50";
               src = emacs-src;
 
               buildInputs = o.buildInputs ++ [ darwin.apple_sdk.frameworks.WebKit ];
@@ -72,6 +72,7 @@ version = "29.0.50";
               patches = [
                 ./patches/fix-window-role.patch
                 ./patches/no-titlebar.patch
+                ./patches/system-appearance.patch
               ];
 
               postPatch = o.postPatch + ''
